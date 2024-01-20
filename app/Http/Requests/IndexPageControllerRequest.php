@@ -27,4 +27,12 @@ class IndexPageControllerRequest extends FormRequest
             'in_menu' => 'sometimes|boolean'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'is_menu.sometimes' => 'Filtr czy strona jest w menu głównym nie jest zawsze wymagany',
+            'is_menu.boolean' => 'Wartość filtru musi byc wartością logiczną (0/1)',
+        ];
+    }
 }

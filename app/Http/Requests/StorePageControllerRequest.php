@@ -26,10 +26,35 @@ class StorePageControllerRequest extends FormRequest
         return [
             'is_active' => 'required|boolean',
             'in_menu' => 'required|boolean',
-            'is_custom' => 'required|boolean|in:1',
+            'is_custom' => 'required|boolean|in:0',
             'route' => 'required|min:5|max:100|string|regex:/^[a-zA-Z]+$/|unique:pages,route',
             'name' => 'required|min:5|max:100|string|regex:/^[a-zA-Z]+$/unique:pages,name',
             'desc' => 'sometimes|min:5',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'is_active.required' => 'Oznacz czy strona jest aktywna',
+            'in_menu.required' => 'Oznacz czy strona ma pojawić się w menu',
+            'is_custom.required' => 'Strona może być tylko w standardowym formacie',
+
+            'route.required' => 'Route jest wymagane',
+            'route.min' => 'Route musi zawierać conajmniej :min znaków',
+            'route.max' => 'Route może zawierać maksymalnie :max znaków',
+            'route.string' => 'Route musi byc tekstem',
+            'route.regex' => 'Route może zaiwerać tylko liter',
+            'route.unique' => 'Route musi być unikalna',
+
+            'name.required' => 'Nazwa jest wymagane',
+            'name.min' => 'Nazwa musi zawierać conajmniej :min znaków',
+            'name.max' => 'Nazwa może zawierać maksymalnie :max znaków',
+            'name.string' => 'Nazwa musi byc tekstem',
+            'name.regex' => 'Nazwa może zaiwerać tylko liter',
+            'name.unique' => 'Nazwa musi być unikalna',
+
+            'desc.min' => 'Opis musi zawierać conajmniej :min znaków',
         ];
     }
 }

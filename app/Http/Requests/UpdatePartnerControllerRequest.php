@@ -30,4 +30,22 @@ class UpdatePartnerControllerRequest extends FormRequest
             'desc' => 'sometimes|min:5',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'order.required' => 'Numer w kolejnosci jest wymagany',
+            'order.integer' => 'Numer w kolejności musi być liczbą',
+            'order.unique' => 'Numer w kolejności musi być unikalny',
+
+            'name.required' => 'Nazwa jest wymagane',
+            'name.min' => 'Nazwa musi zawierać conajmniej :min znaków',
+            'name.max' => 'Nazwa może zawierać maksymalnie :max znaków',
+            'name.string' => 'Nazwa musi byc tekstem',
+
+            'img.required' => 'Musisz podać link do logo partnera',
+
+            'desc.min' => 'Opis musi zawierać conajmniej :min znaków',
+        ];
+    }
 }

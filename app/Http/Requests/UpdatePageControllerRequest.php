@@ -30,4 +30,21 @@ class UpdatePageControllerRequest extends FormRequest
             'desc' => 'sometimes|min:5',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'is_active.required' => 'Oznacz czy strona jest aktywna',
+            'in_menu.required' => 'Oznacz czy strona ma pojawić się w menu',
+
+            'name.required' => 'Nazwa jest wymagane',
+            'name.min' => 'Nazwa musi zawierać conajmniej :min znaków',
+            'name.max' => 'Nazwa może zawierać maksymalnie :max znaków',
+            'name.string' => 'Nazwa musi byc tekstem',
+            'name.regex' => 'Nazwa może zaiwerać tylko liter',
+            'name.unique' => 'Nazwa musi być unikalna',
+
+            'desc.min' => 'Opis musi zawierać conajmniej :min znaków',
+        ];
+    }
 }
