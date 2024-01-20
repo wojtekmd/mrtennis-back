@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AuthenticatedController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PageElementController;
+use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,4 +49,17 @@ Route::group([
     Route::get('/{companyId}', [CompanyController::class, 'show']);
     Route::patch('/{companyId}', [CompanyController::class, 'update']);
 });
+
+Route::group([
+    'prefix' => 'partners'
+], function () {
+    Route::get('', [PartnerController::class, 'index']);
+    Route::get('/{partnerId}', [PartnerController::class, 'show']);
+    Route::post('', [PartnerController::class, 'store']);
+    Route::patch('/{partnerId}', [PartnerController::class, 'update']);
+    Route::delete('/{partnerId}', [PartnerController::class, 'destroy']);
+});
+
+Route::post('send-contact-form', [ContactFormController::class, 'send']);
+
 //});
