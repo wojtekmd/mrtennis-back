@@ -2,17 +2,15 @@
 
 namespace App\Actions;
 
+use App\Http\Requests\IndexPageControllerRequest;
 use App\Models\Page;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class IndexPageController
 {
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(IndexPageControllerRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'in_menu' => 'sometimes|boolean'
-        ]);
+        $validated = $request->validated();
 
         try {
             $pages = Page::where('is_active', true);

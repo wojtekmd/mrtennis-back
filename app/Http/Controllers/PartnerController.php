@@ -7,8 +7,9 @@ use App\Actions\IndexPartnerController;
 use App\Actions\ShowPartnerController;
 use App\Actions\StorePartnerController;
 use App\Actions\UpdatePartnerController;
+use App\Http\Requests\StorePartnerControllerRequest;
+use App\Http\Requests\UpdatePartnerControllerRequest;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class PartnerController extends Controller
 {
@@ -22,12 +23,12 @@ class PartnerController extends Controller
         return (new ShowPartnerController())($partnerId);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(StorePartnerControllerRequest $request): JsonResponse
     {
         return (new StorePartnerController())($request);
     }
 
-    public function update(Request $request, int $partnerId): JsonResponse
+    public function update(UpdatePartnerControllerRequest $request, int $partnerId): JsonResponse
     {
         return (new UpdatePartnerController())($request, $partnerId);
     }

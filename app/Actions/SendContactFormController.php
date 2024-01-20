@@ -2,23 +2,16 @@
 
 namespace App\Actions;
 
+use App\Http\Requests\SendContactFormControllerRequest;
 use App\Notifications\ContactFromNotification;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 
 class SendContactFormController
 {
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(SendContactFormControllerRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|min:1|max:100|string',
-            'surname' => 'required|min:1|max:100|string',
-            'email' => 'required|email',
-            'phoneNumber' => 'required|integer',
-            'message' => 'required|string|min:5',
-            'agreement' => 'required|boolean|in:1',
-        ]);
+        $validated = $request->validated();
 
         try {
             Notification::route('mail', getenv('MAIL_ADDRESS'))

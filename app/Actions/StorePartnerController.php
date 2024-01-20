@@ -2,20 +2,15 @@
 
 namespace App\Actions;
 
+use App\Http\Requests\StorePartnerControllerRequest;
 use App\Models\Partner;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class StorePartnerController
 {
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(StorePartnerControllerRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'order' => 'required|integer|unique:partners,order',
-            'name' => 'required|min:5|max:100|string',
-            'img' => 'required|string',
-            'desc' => 'sometimes|min:5',
-        ]);
+        $validated = $request->validated();
 
         try {
             $partner = Partner::create($validated);

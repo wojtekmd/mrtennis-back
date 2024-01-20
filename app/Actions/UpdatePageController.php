@@ -2,20 +2,15 @@
 
 namespace App\Actions;
 
+use App\Http\Requests\UpdatePageControllerRequest;
 use App\Models\Page;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UpdatePageController
 {
-    public function __invoke(Request $request, int $pageId): JsonResponse
+    public function __invoke(UpdatePageControllerRequest $request, int $pageId): JsonResponse
     {
-        $validated = $request->validate([
-            'is_active' => 'required|boolean',
-            'in_menu' => 'required|boolean',
-            'name' => 'required|min:5|max:100|string|unique:pages,name|regex:/^[a-zA-Z]+$/',
-            'desc' => 'sometimes|min:5',
-        ]);
+        $validated = $request->validated();
 
         try {
             if ($page = Page::with(['elements'])->find($pageId)) {

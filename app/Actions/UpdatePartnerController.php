@@ -2,20 +2,15 @@
 
 namespace App\Actions;
 
+use App\Http\Requests\UpdatePartnerControllerRequest;
 use App\Models\Partner;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UpdatePartnerController
 {
-    public function __invoke(Request $request, int $partnerId): JsonResponse
+    public function __invoke(UpdatePartnerControllerRequest $request, int $partnerId): JsonResponse
     {
-        $validated = $request->validate([
-            'order' => 'required|integer|unique:partners,order',
-            'name' => 'required|min:5|max:100|string',
-            'img' => 'required|string',
-            'desc' => 'sometimes|min:5',
-        ]);
+        $validated = $request->validated();
 
         try {
             if ($partner = Partner::find($partnerId)) {

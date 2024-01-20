@@ -2,31 +2,25 @@
 
 namespace App\Actions;
 
-use App\Models\Page;
+use App\Http\Requests\UpdateCompanyControllerRequest;
+use App\Models\Company;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class UpdateCompanyController
 {
-    public function __invoke(Request $request, int $pageId): JsonResponse
+    public function __invoke(UpdateCompanyControllerRequest $request, int $companyId): JsonResponse
     {
-        $validated = $request->validate([
-            'is_active' => 'required|boolean',
-            'in_menu' => 'required|boolean',
-            'name' => 'required|min:5|max:100|string|unique:pages,name|regex:/^[a-zA-Z]+$/',
-            'desc' => 'sometimes|min:5',
-        ]);
+        $validated = $request->validated();
 
         try {
-            if ($page = Page::with(['elements'])->find($pageId)) {
+            if ($company = Company::find($companyId)) {
+                $company->about = $validated['about'];
+                $company->contact = $validated['contact'];
+                $company->social_media = $validated['social_medias'];
+                $company->open_hours = $validated['open_hours'];
+                $company->save();
 
-                $page->is_active = $validated['is_active'];
-                $page->in_menu = $validated['in_menu'];
-                $page->name = mb_strtolower($validated['name']);
-                $page->desc = $validated['desc'] ?? $page->desc;
-                $page->save();
-
-                return response()->json($page);
+                return response()->json($company);
             }
 
             return response()->json(['message' => 'Strona nie została odnaleziona'], 404);
