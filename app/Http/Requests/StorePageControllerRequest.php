@@ -28,8 +28,10 @@ class StorePageControllerRequest extends FormRequest
             'in_menu' => 'required|boolean',
             'is_custom' => 'required|boolean|in:0',
             'is_editable' => 'required|boolean|in:1',
-            'route' => 'required|min:5|max:100|string|regex:/^[a-zA-Z]+$/|unique:pages,route',
-            'name' => 'required|min:5|max:100|string|regex:/^[a-zA-Z]+$/unique:pages,name',
+            'name' => 'required|array',
+            'name.pl' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
+            'name.en' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
+            'name.de' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
             'desc' => 'sometimes|min:5',
         ];
     }

@@ -52,7 +52,8 @@ Route::group(['middleware' => ['auth:api']], function () {
         'prefix' => 'pages'
     ], function () {
         Route::post('', [PageController::class, 'store']);
-        Route::patch('/{pageId}', [PageController::class, 'update']);
+        Route::post('/{pageId}', [PageController::class, 'update']);
+        Route::delete('/{pageId}', [PageController::class, 'delete']);
 
         Route::group([
             'prefix' => '{pageId}/elements'

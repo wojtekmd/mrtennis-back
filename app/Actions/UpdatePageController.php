@@ -17,7 +17,7 @@ class UpdatePageController
 
                 $page->is_active = $validated['is_active'];
                 $page->in_menu = $validated['in_menu'];
-                $page->name = mb_strtolower($validated['name']);
+                $page->name = $validated['name'];
                 $page->desc = $validated['desc'] ?? $page->desc;
                 $page->save();
 

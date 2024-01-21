@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\DeletePageController;
 use App\Actions\IndexPageController;
 use App\Actions\ShowPageController;
 use App\Actions\StorePageController;
@@ -31,5 +32,10 @@ class PageController extends Controller
     public function update(UpdatePageControllerRequest $request, int $pageId): JsonResponse
     {
         return (new UpdatePageController())($request, $pageId);
+    }
+
+    public function delete(int $pageId): JsonResponse
+    {
+        return (new DeletePageController())($pageId);
     }
 }

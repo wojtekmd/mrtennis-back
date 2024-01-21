@@ -26,7 +26,10 @@ class UpdatePageControllerRequest extends FormRequest
         return [
             'is_active' => 'required|boolean',
             'in_menu' => 'required|boolean',
-            'name' => 'required|min:5|max:100|string|regex:/^[a-zA-Z]+$/|unique:pages,name,' . $this->pageId,
+            'name' => 'required|array',
+            'name.pl' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
+            'name.en' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
+            'name.de' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
             'desc' => 'sometimes|min:5',
         ];
     }

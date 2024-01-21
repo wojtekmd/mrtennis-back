@@ -14,8 +14,11 @@ class StorePageController
         $validated = $request->validated();
 
         try {
-            $validated['name'] = mb_strtolower($validated['name']);
-            $validated['route'] = mb_strtolower($validated['route']);
+            foreach ($validated['name'] as $k => $n) {
+                $validated['name'][$k] = strtoupper($n);
+            }
+
+            $validated['route'] = str_replace(' ', '-', mb_strtolower($validated['name']['pl']));
 
             $page = Page::create($validated);
 
