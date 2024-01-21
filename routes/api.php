@@ -45,33 +45,33 @@ Route::group([
 
 Route::post('send-contact-form', [ContactFormController::class, 'send']);
 
-//Route::group(['middleware' => ['auth:api']], function () {
-Route::get('/user', [MeController::class, 'user']);
-
-Route::group([
-    'prefix' => 'pages'
-], function () {
-    Route::post('', [PageController::class, 'store']);
-    Route::patch('/{pageId}', [PageController::class, 'update']);
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::get('/user', [MeController::class, 'user']);
 
     Route::group([
-        'prefix' => '{pageId}/elements'
+        'prefix' => 'pages'
     ], function () {
-        Route::post('/{pageElementId}', [PageElementController::class, 'update']);
+        Route::post('', [PageController::class, 'store']);
+        Route::patch('/{pageId}', [PageController::class, 'update']);
+
+        Route::group([
+            'prefix' => '{pageId}/elements'
+        ], function () {
+            Route::post('/{pageElementId}', [PageElementController::class, 'update']);
+        });
+    });
+
+    Route::group([
+        'prefix' => 'companies'
+    ], function () {
+        Route::post('/{companyId}', [CompanyController::class, 'update']);
+    });
+
+    Route::group([
+        'prefix' => 'partners'
+    ], function () {
+        Route::post('', [PartnerController::class, 'store']);
+        Route::patch('/{partnerId}', [PartnerController::class, 'update']);
+        Route::delete('/{partnerId}', [PartnerController::class, 'destroy']);
     });
 });
-
-Route::group([
-    'prefix' => 'companies'
-], function () {
-    Route::post('/{companyId}', [CompanyController::class, 'update']);
-});
-
-Route::group([
-    'prefix' => 'partners'
-], function () {
-    Route::post('', [PartnerController::class, 'store']);
-    Route::patch('/{partnerId}', [PartnerController::class, 'update']);
-    Route::delete('/{partnerId}', [PartnerController::class, 'destroy']);
-});
-//});

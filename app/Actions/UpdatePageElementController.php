@@ -22,7 +22,7 @@ class UpdatePageElementController
                 }
 
                 $toUpdate = is_null($validated['keyUpdate']) ? $validated['validated'] : $validated['validated'][$validated['keyUpdate']];
-                $toUpdate = json_decode(str_replace(['<p>', '</p>'], '', json_encode($toUpdate)));
+                $toUpdate = json_decode(str_replace(['<p>', '</p>', '<\/p>'], ['', '', '<br\/>'], json_encode($toUpdate)));
 
                 $pageElement->content = $toUpdate;
                 $pageElement->save();
