@@ -243,9 +243,9 @@ class CreateMenusTable extends Migration
                 'slug' => 'component',
                 'route' => 'component',
                 'name' => [
-                    'pl' => 'component',
-                    'de' => 'component',
-                    'en' => 'component',
+                    'pl' => 'KOMPONENTY',
+                    'de' => 'COMPONENTS',
+                    'en' => 'COMPONENTS',
                 ],
                 'desc' => 'is for components',
             ],
