@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
             $table->boolean('is_active');
             $table->boolean('in_menu');
             $table->boolean('is_custom');
+            $table->boolean('is_editable');
             $table->string('route')->unique();
             $table->json('name')->unique();
             $table->text('desc')->nullable();
@@ -30,6 +31,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => true,
                 'slug' => 'home',
                 'route' => '',
                 'name' => [
@@ -44,6 +46,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => false,
                 'slug' => 'contact',
                 'route' => 'kontakt',
                 'name' => [
@@ -58,6 +61,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => false,
                 'slug' => 'reservation',
                 'route' => 'rezerwacje',
                 'name' => [
@@ -72,6 +76,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => true,
                 'slug' => 'price_list',
                 'route' => 'cennik',
                 'name' => [
@@ -86,6 +91,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => true,
                 'slug' => 'trainers',
                 'route' => 'trenerzy',
                 'name' => [
@@ -100,6 +106,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => false,
+                'is_editable' => true,
                 'slug' => 'trainings',
                 'route' => 'treningi',
                 'name' => [
@@ -114,6 +121,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => false,
+                'is_editable' => true,
                 'slug' => 'courts',
                 'route' => 'korty',
                 'name' => [
@@ -128,6 +136,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => true,
                 'slug' => 'tournaments',
                 'route' => 'turnieje',
                 'name' => [
@@ -142,6 +151,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => false,
+                'is_editable' => true,
                 'slug' => 'facility',
                 'route' => 'obiekt',
                 'name' => [
@@ -156,6 +166,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => false,
+                'is_editable' => true,
                 'slug' => 'tennis_for_everyone',
                 'route' => 'tenis-dla-kazdego',
                 'name' => [
@@ -170,6 +181,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => false,
+                'is_editable' => true,
                 'slug' => 'holidays_for_the_yongest',
                 'route' => 'wakacje-dla-najmlodszych',
                 'name' => [
@@ -184,6 +196,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => true,
                 'slug' => 'partners',
                 'route' => 'partnerzy',
                 'name' => [
@@ -198,6 +211,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => true,
                 'slug' => 'rules',
                 'route' => 'regulamin',
                 'name' => [
@@ -212,6 +226,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => false,
                 'slug' => 'privay_policy',
                 'route' => 'polityka-prywatnosci',
                 'name' => [
@@ -226,6 +241,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
+                'is_editable' => false,
                 'slug' => 'cookies',
                 'route' => 'cookies',
                 'name' => [
@@ -240,6 +256,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => false,
                 'is_custom' => true,
+                'is_editable' => true,
                 'slug' => 'component',
                 'route' => 'component',
                 'name' => [

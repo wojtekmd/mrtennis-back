@@ -24,7 +24,8 @@ class IndexPageControllerRequest extends FormRequest
     public function rules()
     {
         return [
-            'in_menu' => 'sometimes|boolean'
+            'in_menu' => 'sometimes|boolean',
+            'is_editable' => 'sometimes|boolean'
         ];
     }
 

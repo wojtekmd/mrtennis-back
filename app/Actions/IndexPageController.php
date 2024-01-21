@@ -19,6 +19,10 @@ class IndexPageController
                 $pages = $pages->where('in_menu', $validated['in_menu']);
             }
 
+            if (isset($validated['is_editable'])) {
+                $pages = $pages->where('is_editable', $validated['is_editable']);
+            }
+
             $pages = $pages->get();
 
             return response()->json($pages);

@@ -14,6 +14,7 @@ class Page extends Model
         'is_active',
         'in_menu',
         'is_custom',
+        'is_editable',
         'route',
         'name',
         'desc'
@@ -23,6 +24,7 @@ class Page extends Model
         'is_active' => 'boolean',
         'in_menu' => 'boolean',
         'is_custom' => 'boolean',
+        'is_editable' => 'boolean',
         'route' => 'string',
         'name' => 'json',
         'desc' => 'string',

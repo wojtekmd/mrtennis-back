@@ -806,8 +806,8 @@ class CreatePageElementsTable extends Migration
                 'slug' => 'header',
                 'content' => [
                     'pl' => 'WAKACJE Z TENISEM DLA NAJMŁODSZYCH',
-                    'en' => '',
-                    'de' => '',
+                    'en' => 'TENNIS HOLIDAYS FOR THE YOUNGEST',
+                    'de' => 'TENNISFERIEN FÜR DIE JÜNGSTEN',
                 ],
             ],
             [
