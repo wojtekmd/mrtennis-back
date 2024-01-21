@@ -25,9 +25,9 @@ class StorePartnerControllerRequest extends FormRequest
     {
         return [
 //            'order' => 'required|integer|unique:partners,order',
-            'name' => 'required|min:5|max:100|string',
-            'img' => 'required|string',
-            'desc' => 'sometimes|min:5',
+            'name' => 'required|min:2|max:100|string',
+            'img' => 'required|string|url',
+            'desc' => 'sometimes|min:2',
         ];
     }
 
@@ -44,6 +44,7 @@ class StorePartnerControllerRequest extends FormRequest
             'name.string' => 'Nazwa musi byc tekstem',
 
             'img.required' => 'Musisz podać link do logo partnera',
+            'img.url' => 'Musisz podać link do logo partnera',
 
             'desc.min' => 'Opis musi zawierać conajmniej :min znaków',
         ];

@@ -152,9 +152,9 @@ class UpdatePageElementController
 
                 'values' => 'required|array',
                 'values.*' => 'required|array',
-                'values.*.pl' => 'required|string',
-                'values.*.en' => 'required|string',
-                'values.*.de' => 'required|string',
+//                'values.*.pl' => 'required|string',
+//                'values.*.en' => 'required|string',
+//                'values.*.de' => 'required|string',
             ]);
         }
 
@@ -173,9 +173,9 @@ class UpdatePageElementController
 
                 'values' => 'required|array',
                 'values.*' => 'required|array',
-                'values.*.pl' => 'required|string',
-                'values.*.en' => 'required|string',
-                'values.*.de' => 'required|string',
+//                'values.*.pl' => 'required|string',
+//                'values.*.en' => 'required|string',
+//                'values.*.de' => 'required|string',
             ]);
         }
 
@@ -194,9 +194,9 @@ class UpdatePageElementController
 
                 'values' => 'required|array',
                 'values.*' => 'required|array',
-                'values.*.pl' => 'required|string',
-                'values.*.en' => 'required|string',
-                'values.*.de' => 'required|string',
+//                'values.*.pl' => 'required|string',
+//                'values.*.en' => 'required|string',
+//                'values.*.de' => 'required|string',
             ]);
         }
 
@@ -239,7 +239,7 @@ class UpdatePageElementController
                 'trainers.*.order' => 'required|integer',
                 'trainers.*.is_active' => 'required|boolean',
                 'trainers.*.name' => 'required|string',
-                'trainers.*.profession' => 'required|string',
+//                'trainers.*.profession' => 'string',
                 'trainers.*.img' => 'required|string',
                 'trainers.*.phone' => 'required|string',
                 'trainers.*.desc' => 'required|array',
@@ -428,7 +428,7 @@ class UpdatePageElementController
                 'rules.*.header.pl' => 'required|string',
                 'rules.*.header.en' => 'required|string',
                 'rules.*.header.de' => 'required|string',
-                'rules.points' => 'required|array',
+                'rules.points' => 'array',
                 'rules.points.*.pl' => 'required|string',
                 'rules.points.*.en' => 'required|string',
                 'rules.points.*.de' => 'required|string',
@@ -439,7 +439,9 @@ class UpdatePageElementController
 
         if ($pageId === 13 && $pageElement->slug === 'footer_text') {
             $validated = $request->validate([
-                'img' => 'required|string',
+                'pl' => 'required|string',
+                'en' => 'required|string',
+                'de' => 'required|string',
             ]);
         }
 
