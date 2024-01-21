@@ -64,7 +64,7 @@ Route::group([
 Route::group([
     'prefix' => 'companies'
 ], function () {
-    Route::patch('/{companyId}', [CompanyController::class, 'update']);
+    Route::post('/{companyId}', [CompanyController::class, 'update']);
 });
 
 Route::group([

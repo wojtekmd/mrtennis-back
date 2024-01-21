@@ -31,7 +31,7 @@ class CreateMenusTable extends Migration
                 'is_active' => true,
                 'in_menu' => true,
                 'is_custom' => true,
-                'is_editable' => true,
+                'is_editable' => false,
                 'slug' => 'home',
                 'route' => '',
                 'name' => [

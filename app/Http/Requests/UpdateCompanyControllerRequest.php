@@ -34,11 +34,11 @@ class UpdateCompanyControllerRequest extends FormRequest
             'about.company.address' => 'required|string',
             'about.company.nip' => 'required|string',
             'about.company.regon' => 'required|string',
-            'about.bank_account_txt' => 'required|array',
-            'about.bank_account_txt.pl' => 'required|string',
-            'about.bank_account_txt.en' => 'required|string',
-            'about.bank_account_txt.de' => 'required|string',
-            'about.bank_account_no' => 'required|string',
+            'about.company.bank_account_txt' => 'required|array',
+            'about.company.bank_account_txt.pl' => 'required|string',
+            'about.company.bank_account_txt.en' => 'required|string',
+            'about.company.bank_account_txt.de' => 'required|string',
+            'about.company.bank_account_no' => 'required|string',
 
             'contact' => 'required|array',
             'contact.field_name' => 'required|array',
@@ -69,8 +69,8 @@ class UpdateCompanyControllerRequest extends FormRequest
             'open_hours.data_txt.en.in_weekend' => 'required|string',
             'open_hours.data_txt.de.in_week' => 'required|string',
             'open_hours.data_txt.de.in_weekend' => 'required|string',
-            'values.in_week' => 'required|string',
-            'values.in_weekend' => 'required|string',
+            'open_hours.values.in_week' => 'required|string',
+            'open_hours.values.in_weekend' => 'required|string',
         ];
     }
 }
