@@ -538,6 +538,29 @@ class UpdatePageElementController
             ]);
         }
 
+        //CUSTOM DYNAMIC PAGES
+        if ($pageId > 17 && $pageElement->slug === 'header') {
+            $validated = $request->validate([
+                'pl' => 'required|string',
+                'en' => 'required|string',
+                'de' => 'required|string',
+            ]);
+        }
+
+        if ($pageId > 17 && $pageElement->slug === 'content') {
+            $validated = $request->validate([
+                'pl' => 'required|string',
+                'en' => 'required|string',
+                'de' => 'required|string',
+            ]);
+        }
+
+        if ($pageId > 17 && $pageElement->slug === 'img') {
+            $validated = $request->validate([
+                'img' => 'required|string',
+            ]);
+        }
+
         return [
             'validated' => $validated,
             'keyUpdate' => $keyUpdate
