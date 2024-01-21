@@ -22,7 +22,7 @@ class StorePageController
 
             $page = Page::create($validated);
 
-            $this->storeStructurePageElements($page->id);
+            $this->storeStructurePageElements($page->id, $validated['name']);
 
             $page = Page::find($page->id);
 
@@ -32,7 +32,7 @@ class StorePageController
         }
     }
 
-    private function storeStructurePageElements(int $pageId): void
+    private function storeStructurePageElements(int $pageId, array $name): void
     {
         $elements = [
             [
@@ -40,9 +40,9 @@ class StorePageController
                 'is_active' => true,
                 'slug' => 'header',
                 'content' => [
-                    'pl' => '',
-                    'en' => '',
-                    'de' => '',
+                    'pl' => $name['pl'],
+                    'en' => $name['en'],
+                    'de' => $name['de'],
                 ],
             ],
             [

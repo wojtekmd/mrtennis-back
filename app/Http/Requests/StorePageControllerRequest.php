@@ -29,9 +29,9 @@ class StorePageControllerRequest extends FormRequest
             'is_custom' => 'required|boolean|in:0',
             'is_editable' => 'required|boolean|in:1',
             'name' => 'required|array',
-            'name.pl' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
-            'name.en' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
-            'name.de' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
+            'name.pl' => 'required|min:3|max:100|string|regex:/^[a-zA-Z\s]+$/',
+            'name.en' => 'required|min:3|max:100|string|regex:/^[a-zA-Z\s]+$/',
+            'name.de' => 'required|min:3|max:100|string|regex:/^[a-zA-Z\s]+$/',
             'desc' => 'sometimes|min:5',
         ];
     }
