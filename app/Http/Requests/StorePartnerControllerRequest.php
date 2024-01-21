@@ -24,7 +24,7 @@ class StorePartnerControllerRequest extends FormRequest
     public function rules()
     {
         return [
-            'order' => 'required|integer|unique:partners,order',
+//            'order' => 'required|integer|unique:partners,order',
             'name' => 'required|min:5|max:100|string',
             'img' => 'required|string',
             'desc' => 'sometimes|min:5',

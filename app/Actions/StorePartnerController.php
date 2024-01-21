@@ -13,6 +13,7 @@ class StorePartnerController
         $validated = $request->validated();
 
         try {
+            $validated['order'] = Partner::count() + 1;
             $partner = Partner::create($validated);
 
             return response()->json($partner);
