@@ -27,6 +27,7 @@ class StorePageControllerRequest extends FormRequest
             'is_active' => 'required|boolean',
             'in_menu' => 'required|boolean',
             'is_custom' => 'required|boolean|in:0',
+            'is_editable' => 'required|boolean|in:1',
             'route' => 'required|min:5|max:100|string|regex:/^[a-zA-Z]+$/|unique:pages,route',
             'name' => 'required|min:5|max:100|string|regex:/^[a-zA-Z]+$/unique:pages,name',
             'desc' => 'sometimes|min:5',
@@ -39,6 +40,7 @@ class StorePageControllerRequest extends FormRequest
             'is_active.required' => 'Oznacz czy strona jest aktywna',
             'in_menu.required' => 'Oznacz czy strona ma pojawić się w menu',
             'is_custom.required' => 'Strona może być tylko w standardowym formacie',
+            'is_editable.required' => 'Strona musi być do edycji',
 
             'route.required' => 'Route jest wymagane',
             'route.min' => 'Route musi zawierać conajmniej :min znaków',

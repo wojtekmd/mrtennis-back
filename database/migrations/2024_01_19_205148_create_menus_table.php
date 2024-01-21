@@ -266,6 +266,21 @@ class CreateMenusTable extends Migration
                 ],
                 'desc' => 'is for components',
             ],
+            [
+                'id' => 17,
+                'is_active' => true,
+                'in_menu' => false,
+                'is_custom' => false,
+                'is_editable' => true,
+                'slug' => 'websites',
+                'route' => 'websites',
+                'name' => [
+                    'pl' => 'STRONY',
+                    'de' => 'WEBSITES',
+                    'en' => 'WEBSITES',
+                ],
+                'desc' => 'is for pages',
+            ],
         ];
 
         foreach ($pages as $page) {
