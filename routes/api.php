@@ -7,6 +7,7 @@ use App\Http\Controllers\MeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PageElementController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,13 @@ Route::group([
     Route::get('/{partnerId}', [PartnerController::class, 'show']);
 });
 
+Route::group([
+    'prefix' => 'tournaments'
+], function () {
+    Route::get('/', [TournamentController::class, 'index']);
+    Route::get('/{tournamentId}', [TournamentController::class, 'show']);
+});
+
 Route::post('send-contact-form', [ContactFormController::class, 'send']);
 
 Route::group(['middleware' => ['auth:api']], function () {
@@ -74,5 +82,13 @@ Route::group(['middleware' => ['auth:api']], function () {
         Route::post('', [PartnerController::class, 'store']);
         Route::patch('/{partnerId}', [PartnerController::class, 'update']);
         Route::delete('/{partnerId}', [PartnerController::class, 'destroy']);
+    });
+
+    Route::group([
+        'prefix' => 'tournaments'
+    ], function () {
+        Route::post('', [TournamentController::class, 'store']);
+        Route::patch('/{tournamentId}', [TournamentController::class, 'update']);
+        Route::delete('/{tournamentId}', [TournamentController::class, 'delete']);
     });
 });
