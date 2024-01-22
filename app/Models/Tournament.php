@@ -16,7 +16,7 @@ class Tournament extends Model
     protected $casts = [
         'name' => 'string',
         'desc' => 'string',
-        'tournament_date' => 'datetime',
+        'tournament_date' => 'date',
         'tournament_place' => 'string',
         'tournament_img' => 'string',
         'max_participants' => 'integer',

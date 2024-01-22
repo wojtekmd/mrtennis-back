@@ -26,7 +26,7 @@ class UpdateTournamentControllerRequest extends FormRequest
         return [
             'name' => 'required|string',
             'desc' => 'required|string',
-            'tournament_date' => 'required|date_format:Y-m-d H:i:s',
+            'tournament_date' => 'required|date_format:Y-m-d',
             'tournament_place' => 'required|string',
             'tournament_img' => 'required|file',
             'max_participants' => 'required|integer',
