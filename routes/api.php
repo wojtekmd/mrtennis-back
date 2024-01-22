@@ -88,7 +88,7 @@ Route::group(['middleware' => ['auth:api']], function () {
         'prefix' => 'tournaments'
     ], function () {
         Route::post('', [TournamentController::class, 'store']);
-        Route::patch('/{tournamentId}', [TournamentController::class, 'update']);
+        Route::post('/{tournamentId}', [TournamentController::class, 'update']);
         Route::delete('/{tournamentId}', [TournamentController::class, 'delete']);
     });
 });

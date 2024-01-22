@@ -27,9 +27,9 @@ class UpdatePageControllerRequest extends FormRequest
             'is_active' => 'required|boolean',
             'in_menu' => 'required|boolean',
             'name' => 'required|array',
-            'name.pl' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
-            'name.en' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
-            'name.de' => 'required|min:3|max:100|string|regex:/^[a-zA-Z]+$/',
+            'name.pl' => 'required|min:3|max:100|string|regex:/^[a-zA-Z\s]+$/',
+            'name.en' => 'required|min:3|max:100|string|regex:/^[a-zA-Z\s]+$/',
+            'name.de' => 'required|min:3|max:100|string|regex:/^[a-zA-Z\s]+$/',
             'desc' => 'sometimes|min:5',
         ];
     }

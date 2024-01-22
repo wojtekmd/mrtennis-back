@@ -14,9 +14,9 @@ class Tournament extends Model
     ];
 
     protected $casts = [
-        'name' => 'string',
-        'desc' => 'string',
-        'tournament_date' => 'date',
+        'name' => 'json',
+        'desc' => 'json',
+        'tournament_date' => 'string',
         'tournament_place' => 'string',
         'tournament_img' => 'string',
         'max_participants' => 'integer',

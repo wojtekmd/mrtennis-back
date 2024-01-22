@@ -24,11 +24,17 @@ class StoreTournamentControllerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'desc' => 'required|string',
+            'name' => 'required|array',
+            'name.pl' => 'required|string',
+            'name.en' => 'required|string',
+            'name.de' => 'required|string',
+            'desc' => 'required|array',
+            'desc.pl' => 'required|string',
+            'desc.en' => 'required|string',
+            'desc.de' => 'required|string',
             'tournament_date' => 'required|date_format:Y-m-d',
             'tournament_place' => 'required|string',
-            'tournament_img' => 'required|file',
+            'tournament_img' => 'required|url',
             'max_participants' => 'required|integer',
         ];
     }
@@ -37,10 +43,14 @@ class StoreTournamentControllerRequest extends FormRequest
     {
         return [
             'name.required' => 'Nazwa jest wymagane',
-            'name.string' => 'Nazwa musi byc tekstem',
+            'name.pl.required' => 'Nazwa jest wymagane',
+            'name.en.required' => 'Nazwa jest wymagane',
+            'name.de.required' => 'Nazwa jest wymagane',
 
-            'desc.required' => 'Nazwa jest wymagane',
-            'desc.string' => 'Nazwa musi byc tekstem',
+            'desc.required' => 'Opis jest wymagany',
+            'desc.pl.required' => 'Opis jest wymagany',
+            'desc.en.required' => 'Opis jest wymagany',
+            'desc.de.required' => 'Opis jest wymagany',
 
             'tournament_date.required' => 'Data turnieju jest wymagana',
             'tournament_date.date_format' => 'Nie poprawny format daty',
@@ -49,6 +59,7 @@ class StoreTournamentControllerRequest extends FormRequest
             'tournament_place.string' => 'Nazwa musi byc tekstem',
 
             'tournament_img.required' => 'Zdjęcie do turnieju jest wymagane',
+            'tournament_img.url' => 'Podaj link do zdjęcia',
 
             'max_participants.required' => 'Musisz podać maksymalną ilość uczestników',
             'max_participants.integer' => 'Maksymalna ilość uczestników musi być liczbą',
