@@ -11,6 +11,7 @@ use App\Http\Requests\IndexPageControllerRequest;
 use App\Http\Requests\StorePageControllerRequest;
 use App\Http\Requests\UpdatePageControllerRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -19,9 +20,9 @@ class PageController extends Controller
         return (new IndexPageController())($request);
     }
 
-    public function show(int $pageId): JsonResponse
+    public function show(Request $request, $pageId): JsonResponse
     {
-        return (new ShowPageController())($pageId);
+        return (new ShowPageController())($request, $pageId);
     }
 
     public function store(StorePageControllerRequest $request): JsonResponse

@@ -15,15 +15,14 @@ class UpdatePageElementController
         if ($pageElement = PageElement::where(['page_id' => $pageId, 'id' => $pageElementId])->first()) {
 
             $validated = $this->validation($request, $pageElement, $pageId);
-
+            $validated = $this->saveFile($validated, $pageElement, $pageId);
+            
             try {
                 if (is_null($validated['validated'])) {
                     return response()->json(['message' => 'Nie można tego zaakutalizować'], 405);
                 }
 
                 $toUpdate = is_null($validated['keyUpdate']) ? $validated['validated'] : $validated['validated'][$validated['keyUpdate']];
-//                $toUpdate = json_decode(str_replace(['<p>', '</p>', '<\/p>'], ['', '', '<br\/>'], json_encode($toUpdate)));
-
                 $pageElement->content = $toUpdate;
                 $pageElement->save();
 
@@ -35,6 +34,20 @@ class UpdatePageElementController
         } else {
             return response()->json(['message' => 'Strona nie została odnaleziona'], 404);
         }
+    }
+
+    private function saveFile(array $validated, PageElement $pageElement, int $pageId): array
+    {
+        if ($pageId === 5 && $pageElement->slug === 'trainers') {
+            foreach ($validated['trainers'] as $trainerKey => $trainer) {
+                $file = $trainer['img'];
+                $fileName = 'trainer' . $file->getClientOriginalName();
+                $file->storeAs('storage/gallery', $fileName, 'public');
+                $validated['trainers'][$trainerKey]['img'] = '/gallery/' . $fileName;
+            }
+        }
+
+        return $validated;
     }
 
     private function validation(Request $request, PageElement $pageElement, int $pageId): array
@@ -240,7 +253,7 @@ class UpdatePageElementController
                 'trainers.*.is_active' => 'required|boolean',
                 'trainers.*.name' => 'required|string',
 //                'trainers.*.profession' => 'string',
-                'trainers.*.img' => 'required|string',
+                'trainers.*.img' => 'required|file',
                 'trainers.*.phone' => 'required|string',
                 'trainers.*.desc' => 'required|array',
                 'trainers.*.desc.pl' => 'required|string',

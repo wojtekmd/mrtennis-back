@@ -4,13 +4,25 @@ namespace App\Actions;
 
 use App\Models\Page;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ShowPageController
 {
-    public function __invoke(int $pageId): JsonResponse
+    public function __invoke(Request $request, $pageId): JsonResponse
     {
+        $validated = $request->validate([
+            'search_by_route' => 'required|bool'
+        ]);
+
         try {
-            if ($page = Page::with(['elements'])->find($pageId)) {
+            $page = Page::with(['elements']);
+            if ($validated['search_by_route']) {
+                $page = $page->where('route', $pageId);
+            } else {
+                $page = $page->where('id', $pageId);
+            }
+
+            if ($page = $page->first()) {
                 $pageCopy = collect($page)->toArray();
                 $pageCopy['elements'] = [];
 
