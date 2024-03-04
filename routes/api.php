@@ -8,6 +8,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PageElementController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TournamentController;
+use App\Http\Controllers\TournamentImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,6 +95,13 @@ Route::group([
             Route::post('', [TournamentController::class, 'store']);
             Route::post('/{tournamentId}', [TournamentController::class, 'update']);
             Route::delete('/{tournamentId}', [TournamentController::class, 'delete']);
+
+            Route::group([
+                'prefix' => '{tournamentId}/images'
+            ], function () {
+                Route::post('', [TournamentImageController::class, 'store']);
+                Route::delete('/{tournamentImageId}', [TournamentImageController::class, 'delete']);
+            });
         });
     });
 

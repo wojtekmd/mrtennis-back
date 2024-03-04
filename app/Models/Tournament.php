@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tournament extends Model
 {
@@ -21,4 +22,13 @@ class Tournament extends Model
         'tournament_img' => 'string',
         'max_participants' => 'integer',
     ];
+
+    protected $with = [
+        'images'
+    ];
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(TournamentImage::class);
+    }
 }
