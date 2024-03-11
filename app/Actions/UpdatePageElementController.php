@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\PageElement;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UpdatePageElementController
 {
@@ -16,7 +17,7 @@ class UpdatePageElementController
 
             $validated = $this->validation($request, $pageElement, $pageId);
             $validated = $this->saveFile($validated, $pageElement, $pageId);
-            
+
             try {
                 if (is_null($validated['validated'])) {
                     return response()->json(['message' => 'Nie można tego zaakutalizować'], 405);
@@ -39,11 +40,13 @@ class UpdatePageElementController
     private function saveFile(array $validated, PageElement $pageElement, int $pageId): array
     {
         if ($pageId === 5 && $pageElement->slug === 'trainers') {
-            foreach ($validated['trainers'] as $trainerKey => $trainer) {
-                $file = $trainer['img'];
-                $fileName = 'trainer' . $file->getClientOriginalName();
-                $file->storeAs('storage/gallery', $fileName, 'public');
-                $validated['trainers'][$trainerKey]['img'] = '/gallery/' . $fileName;
+            foreach ($validated['validated']['trainers'] as $trainerKey => $trainer) {
+                if (!is_string($trainer['img'])) {
+                    $file = $trainer['img'];
+                    $fileName = time() . '_' . $file->getClientOriginalName();
+                    Storage::putFileAs('public/gallery', $file, $fileName);
+                    $validated['validated']['trainers'][$trainerKey]['img'] = '/storage/gallery/' . $fileName;
+                }
             }
         }
 
@@ -253,7 +256,7 @@ class UpdatePageElementController
                 'trainers.*.is_active' => 'required|boolean',
                 'trainers.*.name' => 'required|string',
 //                'trainers.*.profession' => 'string',
-                'trainers.*.img' => 'required|file',
+                'trainers.*.img' => 'required',
                 'trainers.*.phone' => 'required|string',
                 'trainers.*.desc' => 'required|array',
                 'trainers.*.desc.pl' => 'required|string',

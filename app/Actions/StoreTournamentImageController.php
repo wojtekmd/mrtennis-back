@@ -19,11 +19,11 @@ class StoreTournamentImageController
                 $file = $validated['file'];
                 $fileName = time() . '_' . $file->getClientOriginalName();
 
-                Storage::putFileAs('public/tournaments/' . $tournamentId, $file, $fileName);
+                Storage::putFileAs('public/gallery/' . $tournamentId, $file, $fileName);
 
                 $tournamentImage = TournamentImage::create([
                     'tournament_id' => $tournamentId,
-                    'path' => '/storage/tournaments/' . $tournamentId . '/' . $fileName,
+                    'path' => '/storage/gallery/' . $tournamentId . '/' . $fileName,
                 ]);
 
                 return response()->json($tournamentImage);
